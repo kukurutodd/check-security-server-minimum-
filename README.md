@@ -32,7 +32,7 @@ git clone https://github.com/kukurutodd/check-security-minimum.git
 cd ./check-security-minimum
 
 # Дать права на выполнение
-chmod +x check-security-minimum.sh
+chmod +x check_security_linux_nginx.sh
 
 # Запустить
-sh ./check-security-minimum.sh
+sh ./check_security_linux_nginx.sh
