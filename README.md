@@ -28,8 +28,11 @@
 # Скачать скрипт
 git clone https://github.com/kukurutodd/check-security-minimum.git
 
+# Перейти
+cd ./check-security-minimum
+
 # Дать права на выполнение
-chmod +x /usr/local/bin/security_check.sh
+chmod +x check-security-minimum.sh
 
 # Запустить
-/usr/local/bin/security_check.sh
+sh ./check-security-minimum.sh
