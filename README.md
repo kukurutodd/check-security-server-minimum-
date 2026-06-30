@@ -1,2 +1,35 @@
-# Check-security-server-minimum-
-This script checked based poin security you server.
+# Server Security Check Script
+
+Минимальный скрипт для автоматической проверки безопасности сервера. Анализирует систему, конфигурации, логи и выдаёт точечные рекомендации на основе обнаруженных проблем.
+
+## Что проверяет
+
+- **Симлинки** — созданные не root и не apt (за 7 дней), в `/tmp`, `/var/tmp`, `/dev/shm`, `/usr/local/bin`, автозапуск
+- **Подозрительные файлы** — в `/usr/local/bin`, `/tmp`, `/var/tmp`
+- **Автозапуск** — cron и systemd таймеры
+- **SUID/SGID биты** — нестандартные файлы
+- **Историю команд** — других пользователей
+- **Антируткиты** — установлены ли rkhunter и chkrootkit
+- **Открытые порты** — внешние (0.0.0.0, ::)
+- **Модули ядра** — подозрительные (crypto, miner, hide, rootkit)
+- **Файлы, созданные вне сессии** — не root, не apt в `/etc`, `/bin`, `/usr/bin`
+- **RFI/LFI** — попытки удалённого/локального включения файлов
+- **Веб-шеллы** — попытки загрузки
+- **POST-запросы** — подозрительные
+- **Атаки на сервисы** — SSH (брутфорс), SQL-инъекции, XSS, почта, FTP, доступ к админкам
+- **Nginx** — конфигурация (версия, autoindex, таймауты, методы)
+- **SSL** — срок действия сертификата
+- **Miss configuration** — пустые пароли, стандартные пользователи, display_errors, expose_php
+- **Нагрузка** — uptime
+
+## Установка
+
+```bash
+# Скачать скрипт
+wget -O /usr/local/bin/security_check.sh https://raw.githubusercontent.com/kukurutodd/security-check/main/security_check.sh
+
+# Дать права на выполнение
+chmod +x /usr/local/bin/security_check.sh
+
+# Запустить
+/usr/local/bin/security_check.sh
